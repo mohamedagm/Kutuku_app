@@ -6,40 +6,92 @@ class Failures {
   Failures(this.errMessage);
 }
 
-class DioExceptions extends Failures {
-  DioExceptions(super.errMessage);
-  factory DioExceptions.fromDioError(DioException dioError) {
+class DioLoginExceptions extends Failures {
+  DioLoginExceptions(super.errMessage);
+
+  factory DioLoginExceptions.fromDioError(DioException dioError) {
+    final statusCode = dioError.response?.statusCode ?? 0;
+
     switch (dioError.type) {
       case DioExceptionType.connectionTimeout:
-        return DioExceptions("Connection timeout. Please try again.");
+        return DioLoginExceptions("Connection timeout. Please try again.");
       case DioExceptionType.sendTimeout:
-        return DioExceptions("Send timeout. Please try again.");
+        return DioLoginExceptions("Send timeout. Please try again.");
       case DioExceptionType.receiveTimeout:
-        return DioExceptions("Receive timeout. Please try again.");
+        return DioLoginExceptions("Receive timeout. Please try again.");
       case DioExceptionType.badCertificate:
-        return DioExceptions("Bad certificate. Please check your connection.");
-      case DioExceptionType.badResponse:
-        final statusCode = dioError.response?.statusCode ?? 0;
-        if (statusCode == 400) {
-          return DioExceptions("Invalid credentials.");
-        } else if (statusCode == 401) {
-          return DioExceptions("Unauthorized. Please check your login.");
-        } else if (statusCode == 404) {
-          return DioExceptions("Not found. Please try again later.");
-        } else if (statusCode == 500) {
-          return DioExceptions("Server error. Please try again later.");
-        } else {
-          return DioExceptions("Received invalid status code: $statusCode");
-        }
-      case DioExceptionType.cancel:
-        return DioExceptions("Request was cancelled.");
+        return DioLoginExceptions(
+          "Bad certificate. Please check your connection.",
+        );
       case DioExceptionType.connectionError:
-        return DioExceptions("Connection error. Please check your internet.");
+        return DioLoginExceptions(
+          "Connection error. Please check your internet.",
+        );
+      case DioExceptionType.cancel:
+        return DioLoginExceptions("Request was cancelled.");
       case DioExceptionType.unknown:
         if (dioError.error is SocketException) {
-          return DioExceptions("No Internet connection.");
+          return DioLoginExceptions("No Internet connection.");
         }
-        return DioExceptions("Unexpected error occurred. Please try again.");
+        return DioLoginExceptions("Unexpected login error occurred.");
+      case DioExceptionType.badResponse:
+        switch (statusCode) {
+          case 400:
+            return DioLoginExceptions("Invalid credentials.");
+          case 401:
+            return DioLoginExceptions("Unauthorized. Please check your login.");
+          case 500:
+            return DioLoginExceptions("Server error. Please try again.");
+          default:
+            return DioLoginExceptions("Login failed. Status code: $statusCode");
+        }
+    }
+  }
+}
+
+class DioProductsExceptions extends Failures {
+  DioProductsExceptions(super.errMessage);
+
+  factory DioProductsExceptions.fromDioError(DioException dioError) {
+    final statusCode = dioError.response?.statusCode ?? 0;
+
+    switch (dioError.type) {
+      case DioExceptionType.connectionTimeout:
+        return DioProductsExceptions("Connection timeout. Please try again.");
+      case DioExceptionType.sendTimeout:
+        return DioProductsExceptions("Send timeout. Please try again.");
+      case DioExceptionType.receiveTimeout:
+        return DioProductsExceptions("Receive timeout. Please try again.");
+      case DioExceptionType.badCertificate:
+        return DioProductsExceptions(
+          "Bad certificate. Please check your connection.",
+        );
+      case DioExceptionType.connectionError:
+        return DioProductsExceptions(
+          "Connection error. Please check your internet.",
+        );
+      case DioExceptionType.cancel:
+        return DioProductsExceptions("Request was cancelled.");
+      case DioExceptionType.unknown:
+        if (dioError.error is SocketException) {
+          return DioProductsExceptions("No Internet connection.");
+        }
+        return DioProductsExceptions("Unexpected product error occurred.");
+      case DioExceptionType.badResponse:
+        switch (statusCode) {
+          case 400:
+            return DioProductsExceptions(
+              "Bad request. Please check filters or query.",
+            );
+          case 404:
+            return DioProductsExceptions("Products not found.");
+          case 500:
+            return DioProductsExceptions("Server error. Please try again.");
+          default:
+            return DioProductsExceptions(
+              "Product request failed. Status code: $statusCode",
+            );
+        }
     }
   }
 }

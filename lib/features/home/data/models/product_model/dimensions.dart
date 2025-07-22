@@ -8,7 +8,7 @@ class Dimensions {
   factory Dimensions.fromJson(Map<String, dynamic> json) => Dimensions(
     width: (json['width'] as num?)?.toDouble(),
     height: (json['height'] as num?)?.toDouble(),
-    depth: json['depth'] as int?,
+    depth: (json['depth'] as num?)?.toInt(),
   );
 
   Map<String, dynamic> toJson() => {

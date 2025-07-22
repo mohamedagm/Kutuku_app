@@ -60,7 +60,7 @@ class ProductModel {
     discountPercentage: (json['discountPercentage'] as num?)?.toDouble(),
     rating: (json['rating'] as num?)?.toDouble(),
     stock: json['stock'] as int?,
-    tags: json['tags'] as List<String>?,
+    tags: List<String>.from(json['tags'] ?? []),
     brand: json['brand'] as String?,
     sku: json['sku'] as String?,
     weight: json['weight'] as int?,
@@ -81,7 +81,8 @@ class ProductModel {
         json['meta'] == null
             ? null
             : Meta.fromJson(json['meta'] as Map<String, dynamic>),
-    images: json['images'] as List<String>?,
+    images:
+        (json['images'] as List<dynamic>?)?.map((e) => e.toString()).toList(),
     thumbnail: json['thumbnail'] as String?,
   );
 

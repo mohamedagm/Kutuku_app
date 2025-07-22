@@ -43,7 +43,7 @@ class CustomCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Text(
-                      'Nike Jordan',
+                      productModel.title!,
                       //  productModel.title,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -56,7 +56,10 @@ class CustomCard extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(r'$140.5', style: Styles.kHomeShoesPrice),
+                        Text(
+                          '\$${productModel.price!}',
+                          style: Styles.kHomeShoesPrice,
+                        ),
                         //  Text('\$${productModel.price.toString()}'),
                         Container(
                           height: 28,
@@ -93,7 +96,7 @@ class CustomCard extends StatelessWidget {
             child: Image.network(
               height: 120,
               width: 120,
-              'https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/1.webp', // 'productModel.image',
+              productModel.images![1],
             ),
           ),
         ],

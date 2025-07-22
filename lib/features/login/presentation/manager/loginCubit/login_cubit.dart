@@ -9,22 +9,16 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.dio) : super(LoginInitial());
   final Dio dio;
   Future<void> login({required String name, required String password}) async {
-    emit(LoginLoading());
-
     try {
+      emit(LoginLoading());
       final res = await dio.post(
         'https://dummyjson.com/auth/login',
         data: {"username": name, "password": password},
         options: Options(headers: {'Content-Type': 'application/json'}),
       );
-
-      if (res.statusCode == 200) {
-        emit(LoginSuccess());
-      } else {
-        emit(LoginFailure('Unexpected status code: ${res.statusCode}'));
-      }
+      emit(LoginSuccess());
     } on DioException catch (e) {
-      emit(LoginFailure(DioExceptions.fromDioError(e).errMessage));
+      emit(LoginFailure(DioLoginExceptions.fromDioError(e).errMessage));
     } catch (e) {
       emit(LoginFailure(e.toString()));
     }
