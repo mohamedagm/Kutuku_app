@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:kutuku/features/login/presentation/views/login_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BottomBoarding extends StatelessWidget {
   const BottomBoarding({
     super.key,
     required this.pageController,
+    required this.currentPage,
   });
 
   final PageController pageController;
+  final int currentPage;
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +37,18 @@ class BottomBoarding extends StatelessWidget {
               ),
               backgroundColor: Color(0xff5B9EE1),
             ),
-            onPressed: () {},
+            onPressed: () {
+              currentPage == 2
+                  ? Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => LoginView()),
+                  )
+                  : pageController.nextPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.ease,
+                  );
+            },
             child: Text(
-              'Get Started',
+              currentPage == 0 ? 'Get Started' : 'Next',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 16,
