@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kutuku/features/home/data/models/product_model/product_model.dart';
 import 'package:kutuku/features/home/presentation/widgets/custom_card.dart';
 import 'package:kutuku/features/login/presentation/widgets/custom_text_field.dart';
 
@@ -11,6 +12,7 @@ class HomeViewBody extends StatefulWidget {
 
 class _HomeViewBodyState extends State<HomeViewBody> {
   TextEditingController? controller;
+  ProductModel productModel = ProductModel();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -73,7 +75,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   crossAxisSpacing: 10,
                 ),
                 itemBuilder: (context, index) {
-                  return SizedBox(child: CustomCard());
+                  return SizedBox(
+                    child: CustomCard(productModel: productModel),
+                  );
                 },
               ),
             ),

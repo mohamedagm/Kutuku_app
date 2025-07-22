@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kutuku/core/utils/styles.dart';
+import 'package:kutuku/features/home/data/models/product_model/product_model.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key});
-  //final ProductModel productModel;
+  const CustomCard({super.key, required this.productModel});
+  final ProductModel productModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
