@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kutuku/features/onBoarding/data/boarding_model.dart';
 import 'package:kutuku/features/onBoarding/presentation/widgets/ellipse_shape.dart';
-import 'package:kutuku/features/onBoarding/presentation/widgets/shoes_Boarding.dart';
+import 'package:kutuku/features/onBoarding/presentation/widgets/shoes_boarding.dart';
 import 'package:kutuku/features/onBoarding/presentation/widgets/sub_title_boarding.dart';
 import 'package:kutuku/features/onBoarding/presentation/widgets/title_boarding.dart';
 

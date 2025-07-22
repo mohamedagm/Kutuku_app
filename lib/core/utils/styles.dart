@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Styles {
-  static const Color kPrimaryColor = Color(0xFF5B9EE1);
+  static const Color kPrimaryColor = Color(0xff5B9EE1);
   ////////////
   static const TextStyle kLoginTitle = TextStyle(
     fontSize: 35,
@@ -34,5 +34,17 @@ class Styles {
   static const TextStyle kButtonText = TextStyle(
     fontSize: 20,
     color: Colors.white,
+  );
+
+  //home
+  static const TextStyle kHomeShoesName = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: Color(0xff1A2530),
+  );
+  static const TextStyle kHomeShoesPrice = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: Color(0xff1A2530),
   );
 }

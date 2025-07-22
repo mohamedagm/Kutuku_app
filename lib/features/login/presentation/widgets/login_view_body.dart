@@ -117,7 +117,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     ),
                     SizedBox(height: 10),
                     CustomButton(
-                      backgroundColor: Color(0xff5B9EE1),
+                      backgroundColor: Styles.kPrimaryColor,
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           // cubit method of login

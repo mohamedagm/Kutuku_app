@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kutuku/core/utils/styles.dart';
 import 'package:kutuku/features/login/presentation/views/login_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -35,7 +36,7 @@ class BottomBoarding extends StatelessWidget {
                 MediaQuery.of(context).size.width * 0.4,
                 MediaQuery.of(context).size.height * 0.06,
               ),
-              backgroundColor: Color(0xff5B9EE1),
+              backgroundColor: Styles.kPrimaryColor,
             ),
             onPressed: () {
               currentPage == 2

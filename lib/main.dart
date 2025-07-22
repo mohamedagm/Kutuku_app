@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kutuku/features/home/presentation/views/home_view.dart';
 import 'package:kutuku/features/onBoarding/presentation/views/splash_view.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class KutukuApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Cereal'),
-      home: SplashView(),
+      home: HomeView(),
     );
   }
 }
