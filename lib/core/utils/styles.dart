@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Styles {
   static const Color kPrimaryColor = Color(0xff5B9EE1);
+  static const Color kBackGroundColor = Color(0xffF8F9FA);
   ////////////
   static const TextStyle kLoginTitle = TextStyle(
     fontSize: 35,
@@ -46,5 +47,23 @@ class Styles {
     fontSize: 14,
     fontWeight: FontWeight.w500,
     color: Color(0xff1A2530),
+  );
+  static const TextStyle kDetailsTitle = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.w500,
+  );
+  static const TextStyle kDetailsDesc = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w300,
+  );
+  static const TextStyle kDetailsShoesPrice = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color: Color(0xff1A2530),
+  );
+  static const TextStyle kDetailsShoesInfo = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w800,
+    color: Colors.white,
   );
 }

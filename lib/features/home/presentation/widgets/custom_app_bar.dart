@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
-
+  const CustomAppBar({
+    super.key,
+    required this.icon,
+    this.onPressed,
+    this.title,
+  });
+  final Widget icon;
+  final void Function()? onPressed;
+  final Widget? title;
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
@@ -13,8 +20,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding: const EdgeInsets.only(left: 16.0),
         child: IconButton(
           style: IconButton.styleFrom(backgroundColor: Colors.white),
-          onPressed: () {},
-          icon: Icon(Icons.apps),
+          onPressed: onPressed,
+          icon: icon,
         ),
       ),
       actions: [
@@ -28,26 +35,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ],
       centerTitle: true,
-      title: Column(
-        children: [
-          Text(
-            'Store location',
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-          Text(
-            '📍Egypt, naser city',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
-      ),
+      title: title,
     );
   }
 }

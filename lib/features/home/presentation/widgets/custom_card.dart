@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kutuku/core/utils/styles.dart';
 import 'package:kutuku/features/home/data/models/product_model/product_model.dart';
+import 'package:kutuku/features/home/presentation/views/home_details_view.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard({super.key, required this.productModel});
@@ -9,6 +10,12 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeDetailsView(productModel: productModel),
+          ),
+        );
         // Navigator.pushNamed(
         //   context,
         //   UpdateProductScreen.id,
